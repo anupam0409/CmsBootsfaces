@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Home Page</title>
+	<meta name="author" content="Riccardo Massera" />
+</h:head>
+<h:body style="padding-top: 60px">
+	<ui:include src="/include/header.xhtml"></ui:include>
+	<b:container fluid="true">
+		<b:row>
+			<ui:include src="/include/sidebar.xhtml"></ui:include>
+			<b:column col-sm="9" offset-sm="3" col-md="10" offset="2"
+				styleClass="main">
+				<h2>Call Logging</h2>
+				<hr size="10"></hr>
+				<b:row styleClass="placeholders">
+					<b:column col-xs="6" col-sm="4" styleClass="placeholder">
+						<h4>Call Info</h4>
+						<br></br>
+
+						<select id="calltype" class="form-control">
+							<option value="Install">Select Call Type</option>
+							<option value="AddTerminalRequest">Add Terminal Request</option>
+							<option value="DeInstallation">DeInstallation</option>
+							<option value="AssetSwap">AssetSwap</option>
+							<option value="BreakFix">BreakFix</option>
+							<option value="PaperRoll">PaperRoll</option>
+							<option value="TerminalProfileUpdate">Terminal Profile
+								Update</option>
+							<option value="MerchantProfileUpdate">Merchant Profile
+								Update</option>
+							<option value="TerminalActivation">Terminal Activation</option>
+							<option value="TerminalDeactivation">Terminal
+								Deactivation</option>
+
+						</select>
+						<br></br>
+						<b:inputText id="remarks" placeholder="Remarks" />
+
+						<b:selectOneMenu id="callmode" class="form-control">
+							<f:selectItem itemLabel="Call Mode" itemValue="" />
+							<f:selectItem itemLabel="mode1" itemValue="1" />
+							<f:selectItem itemLabel="mode2" itemValue="2" />
+							<f:selectItem itemLabel="mode3" itemValue="3" />
+						</b:selectOneMenu>
+						<b:form id="searchby">
+							<b:selectOneMenu id="searchby" class="form-control">
+								<f:selectItem itemLabel="Search By" itemValue="" />
+								<f:selectItem itemLabel="MID" itemValue="1" />
+								<f:selectItem itemLabel="TID" itemValue="2" />
+							</b:selectOneMenu>
+							<b:inputText id="searchbyvalue" placeholder="Search Value"
+								class="form-control">
+								<f:facet name="append">
+						      			<b:commandButton look="primary" value="Search"
+										update="growl" />
+								</f:facet>
+							</b:inputText>
+							<b:growl id="growl" showDetail="true" showSummary="true"
+								life="3000" animation-enter="animated bounceInDown"
+								animation-exit="animated flipOutX" />
+						</b:form>
+					</b:column>
+					<b:column col-xs="6" col-sm="4" styleClass="placeholder">
+						<h4>Merchant Info</h4>
+						<br></br>
+						<b:inputText id="mid" placeholder="MID" />
+						<b:inputText id="dbaname" placeholder="DBA Name" />
+						<b:inputText id="acquiringbank" placeholder="Acquiring Bank" />
+						<b:inputText id="address" placeholder="Address" />
+						<b:inputText id="city" placeholder="City" />
+						<b:inputText id="pincode" placeholder="PinCode" />
+					</b:column>
+					<b:column col-xs="6" col-sm="4" styleClass="placeholder">
+						<h4>Call Allocation Info</h4>
+						<br></br>
+						<b:selectOneMenu id="fspcenter" class="form-control">
+							<f:selectItem itemLabel="FSP Center" itemValue="" />
+							<f:selectItem itemLabel="center1" itemValue="1" />
+							<f:selectItem itemLabel="center2" itemValue="2" />
+
+						</b:selectOneMenu>
+
+						<b:selectOneMenu id="fspregion" class="form-control">
+							<f:selectItem itemLabel="FSP Region" itemValue="" />
+							<f:selectItem itemLabel="region1" itemValue="1" />
+							<f:selectItem itemLabel="region2" itemValue="2" />
+							<f:selectItem itemLabel="region3" itemValue="3" />
+						</b:selectOneMenu>
+
+						<b:selectOneMenu id="fspsubregion" class="form-control">
+							<f:selectItem itemLabel="FSP SubRegion" itemValue="" />
+							<f:selectItem itemLabel="region1" itemValue="1" />
+							<f:selectItem itemLabel="region2" itemValue="2" />
+							<f:selectItem itemLabel="region3" itemValue="3" />
+						</b:selectOneMenu>
+
+						<b:selectOneMenu id="engineer" class="form-control">
+							<f:selectItem itemLabel="Engineer" itemValue="" />
+							<f:selectItem itemLabel="engineer1" itemValue="1" />
+							<f:selectItem itemLabel="engineer2" itemValue="2" />
+							<f:selectItem itemLabel="engineer3" itemValue="3" />
+						</b:selectOneMenu>
+					</b:column>
+				</b:row>
+				<hr size="10"></hr>
+				<b:row styleClass="table-responsive">
+					<div id="existingterminalinfo">
+						<b:column col-xs="6" col-sm="3" styleClass="placeholder">
+							<h4>Existing Terminal Info</h4>
+							<br></br>
+							<b:inputText id="devicemodel" placeholder="Device Model" />
+							<b:inputText id="contype" placeholder="Contype" />
+							<b:inputText id="simcarrier" placeholder="SIM Carrier" />
+						</b:column>
+					</div>
+					<div id="newterminalinfo">
+						<b:column col-xs="6" col-sm="3" styleClass="placeholder">
+							<h4>New Terminal Info</h4>
+							<br></br>
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Product Type" itemValue="" />
+								<f:selectItem itemLabel="prod1" itemValue="1" />
+								<f:selectItem itemLabel="prod2" itemValue="2" />
+								<f:selectItem itemLabel="prod3" itemValue="3" />
+							</b:selectOneMenu>
+
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Contype" itemValue="" />
+								<f:selectItem itemLabel="contype1" itemValue="1" />
+
+							</b:selectOneMenu>
+
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Device Model" itemValue="" />
+								<f:selectItem itemLabel="model2" itemValue="1" />
+							</b:selectOneMenu>
+
+							<b:inputText id="transactionlimit"
+								placeholder="Transaction Limit" />
+							<b:inputText id="bqrnumber" placeholder="BQR Number" />
+						</b:column>
+					</div>
+					<div id="deinstallationinfo">
+						<b:column col-xs="6" col-sm="3" styleClass="placeholder">
+							<h4>De-Installation Info</h4>
+							<br></br>
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Is Fradulent" itemValue="" />
+								<f:selectItem itemLabel="yes" itemValue="1" />
+							</b:selectOneMenu>
+
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Fraud Region Code" itemValue="" />
+								<f:selectItem itemLabel="code2" itemValue="1" />
+							</b:selectOneMenu>
+
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="MATCH Fraud Code" itemValue="" />
+								<f:selectItem itemLabel="code3" itemValue="1" />
+							</b:selectOneMenu>
+
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Trace Fraud Code" itemValue="" />
+								<f:selectItem itemLabel="fraud code2" itemValue="1" />
+							</b:selectOneMenu>
+						</b:column>
+					</div>
+					<div id="breakdowninfo">
+						<b:column col-xs="6" col-sm="3" styleClass="placeholder">
+							<h4>Breakdown Info</h4>
+							<br></br>
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Problem Code" itemValue="" />
+								<f:selectItem itemLabel="code2" itemValue="1" />
+							</b:selectOneMenu>
+
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Problem SubCode" itemValue="" />
+								<f:selectItem itemLabel="subcode" itemValue="1" />
+							</b:selectOneMenu>
+						</b:column>
+					</div>
+
+				</b:row>
+
+				<b:row styleClass="placeholders">
+					<div id="consumableinfo">
+						<b:column col-xs="6" col-sm="3" styleClass="placeholder">
+							<h4>Consumable Info</h4>
+							<br></br>
+							<b:selectOneMenu class="form-control">
+								<f:selectItem itemLabel="Requested Consumable" itemValue="" />
+								<f:selectItem itemLabel="consumable" itemValue="1" />
+							</b:selectOneMenu>
+							<b:inputText id="requestedcity" placeholder="Requested Qty" />
+						</b:column>
+					</div>
+				</b:row>
+
+			</b:column>
+		</b:row>
+	</b:container>
+	<style type="text/css">
+.sub-header {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+}
+
+.navbar-fixed-top {
+	border: 0 none;
+}
+
+.sidebar {
+	display: none;
+}
+
+@media ( min-width : 768px) {
+	.sidebar {
+		background-color: #f5f5f5;
+		border-right: 1px solid #eee;
+		bottom: 0;
+		display: block;
+		left: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: 20px;
+		position: fixed;
+		top: 51px;
+		z-index: 1000;
+	}
+}
+
+.nav-list {
+	margin-bottom: 20px;
+	margin-left: -20px;
+	margin-right: -21px;
+}
+
+.nav-list>li>a {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.nav-list>.active>a, .nav-sidebar>.active>a:hover, .nav-sidebar>.active>a:focus
+	{
+	background-color: #428bca;
+	color: #fff;
+}
+
+.main {
+	padding: 20px;
+}
+
+@media ( min-width : 768px) {
+	.main {
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+}
+
+.main .page-header {
+	margin-top: 0;
+}
+
+.placeholders {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.placeholders h4 {
+	margin-bottom: 0;
+}
+
+.placeholder {
+	margin-bottom: 20px;
+}
+
+.placeholder img {
+	border-radius: 50%;
+	display: inline-block;
+}
+</style>
+	<script>
+		$("#calltype").change(
+				function() {
+					if ($(this).val() == "AddTerminalRequest") {
+						$('#newterminalinfo').show();
+						$('#existingterminalinfo').hide();
+						$('#deinstallationinfo').hide();
+						$('#breakdowninfo').hide();
+						$('#consumableinfo').hide();
+					} else if ($(this).val() == "DeInstallation") {
+						$('#newterminalinfo').hide();
+						$('#breakdowninfo').hide();
+						$('#consumableinfo').hide();
+						$('#existingterminalinfo').show();
+						$('#deinstallationinfo').show();
+
+					} else if ($(this).val() == "AssetSwap") {
+						$('#newterminalinfo').show();
+						$('#breakdowninfo').hide();
+						$('#consumableinfo').hide();
+						$('#existingterminalinfo').show();
+						$('#deinstallationinfo').hide();
+
+					} else if ($(this).val() == "BreakFix") {
+						$('#newterminalinfo').hide();
+						$('#breakdowninfo').show();
+						$('#consumableinfo').hide();
+						$('#existingterminalinfo').show();
+						$('#deinstallationinfo').hide();
+
+					} else if ($(this).val() == "PaperRoll") {
+						$('#newterminalinfo').hide();
+						$('#breakdowninfo').hide();
+						$('#consumableinfo').show();
+						$('#existingterminalinfo').show();
+						$('#deinstallationinfo').hide();
+					} else if ($(this).val() == "TerminalProfileUpdate"
+							|| $(this).val() == "TerminalActivation") {
+						$('#newterminalinfo').hide();
+						$('#breakdowninfo').hide();
+						$('#consumableinfo').hide();
+						$('#existingterminalinfo').show();
+						$('#deinstallationinfo').hide();
+					} else if ($(this).val() == "MerchantProfileUpdate") {
+						$('#newterminalinfo').hide();
+						$('#breakdowninfo').hide();
+						$('#consumableinfo').hide();
+						$('#existingterminalinfo').hide();
+						$('#deinstallationinfo').hide();
+					} else if ($(this).val() == "TerminalDeactivation") {
+						$('#newterminalinfo').hide();
+						$('#breakdowninfo').hide();
+						$('#consumableinfo').hide();
+						$('#existingterminalinfo').show();
+						$('#deinstallationinfo').show();
+					} else {
+						$('#newterminalinfo').show();
+						$('#breakdowninfo').show();
+						$('#consumableinfo').show();
+						$('#existingterminalinfo').show();
+						$('#deinstallationinfo').show();
+					}
+				});
+		$("#calltype").trigger("change");
+	</script>
+</h:body>
+</html>

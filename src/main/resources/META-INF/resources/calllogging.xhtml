@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Call Logging</title>
+	<meta name="author" content="Riccardo Massera" />
+</h:head>
+<h:body style="padding-top: 60px; background-color:#f5f5f5;">
+	<ui:include src="/include/header.xhtml"></ui:include>
+	<b:container id="searchdetails" fluid="true">
+		<b:form>
+			<b:row>
+				<b:column span="3">
+					<h:outputText value="TID" />
+					<b:inputText placeholder="Enter TID" value="#{merchantBean.TID}"
+						class="form-control">
+						<f:facet name="append">
+						      	<b:commandButton look="primary" value="Search"
+								action="#{merchantBean.breakfixsearchbytid}"
+								update="searchdetails" />
+						</f:facet>
+					</b:inputText>
+				</b:column>
+			</b:row>
+			<h4>Merchant Info</h4>
+			<b:row>
+				<b:column span="3">
+					<h:outputText value="MID" />
+					<b:inputText id="mid" placeholder="MID" class="form-control"
+						value="#{merchantBean.MID}" />
+					<h:outputText value="City" />
+					<b:inputText id="city" placeholder="City" class="form-control"
+						value="#{merchantBean.city}" />
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="DBAName" />
+					<b:inputText id="dbaname" placeholder="DBA Name"
+						class="form-control" value="#{merchantBean.dbaname}" />
+					<h:outputText value="Pincode" />
+					<b:inputText id="pincode" placeholder="PinCode"
+						value="#{merchantBean.pincode}" class="form-control" />
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="Acquiring Bank" />
+					<b:inputText id="acquiringbank" placeholder="Acquiring Bank"
+						value="#{merchantBean.acqbank}" class="form-control" />
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="Address" />
+					<b:inputText id="address" placeholder="Address"
+						class="form-control" value="#{merchantBean.address}" />
+				</b:column>
+
+			</b:row>
+			<h4>Call Allocation Info</h4>
+			<b:row>
+				<b:column span="3">
+					<h:outputText value="FSP Center" />
+					<b:selectOneMenu id="fspcenter" class="form-control">
+						<f:selectItem itemLabel="#{merchantBean.fspcenter}" itemValue="" />
+						<f:selectItem itemLabel="center1" itemValue="1" />
+						<f:selectItem itemLabel="center2" itemValue="2" />
+					</b:selectOneMenu>
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="FSP Region" />
+					<b:selectOneMenu id="fspregion" class="form-control">
+						<f:selectItem itemLabel="#{merchantBean.fspregion}" itemValue="" />
+						<f:selectItem itemLabel="region1" itemValue="1" />
+						<f:selectItem itemLabel="region2" itemValue="2" />
+						<f:selectItem itemLabel="region3" itemValue="3" />
+					</b:selectOneMenu>
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="FSP Subregion" />
+					<b:selectOneMenu id="fspsubregion" class="form-control">
+						<f:selectItem itemLabel="#{merchantBean.fspsubregion}"
+							itemValue="" />
+						<f:selectItem itemLabel="region1" itemValue="1" />
+						<f:selectItem itemLabel="region2" itemValue="2" />
+						<f:selectItem itemLabel="region3" itemValue="3" />
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>
+			<h4>Existing Terminal Info</h4>
+			<b:row>
+				<b:column span="3">
+					<h:outputText value="Product Type" />
+					<b:selectOneMenu id="ProductType" class="form-control">
+						<f:selectItem itemLabel="#{merchantBean.producttype}" itemValue="" />
+						<f:selectItem itemLabel="center1" itemValue="1" />
+						<f:selectItem itemLabel="center2" itemValue="2" />
+					</b:selectOneMenu>
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="Connectivity Type" />
+					<b:selectOneMenu id="Contype" class="form-control">
+						<f:selectItem itemLabel="#{merchantBean.contype}" itemValue="" />
+						<f:selectItem itemLabel="region1" itemValue="1" />
+						<f:selectItem itemLabel="region2" itemValue="2" />
+						<f:selectItem itemLabel="region3" itemValue="3" />
+					</b:selectOneMenu>
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="Device Model" />
+					<b:selectOneMenu id="DeviceModel" class="form-control">
+						<f:selectItem itemLabel="#{merchantBean.devicemodel}" itemValue="" />
+						<f:selectItem itemLabel="region1" itemValue="1" />
+						<f:selectItem itemLabel="region2" itemValue="2" />
+						<f:selectItem itemLabel="region3" itemValue="3" />
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>
+			<h4>Breakdown Info</h4>
+			<b:row>
+				<b:column span="3">
+					<h:outputText value="Problem Code" />
+					<b:selectOneMenu class="form-control" value="#{merchantBean.problemcode}">
+						<f:selectItem itemLabel="code1" itemValue="" />
+						<f:selectItem itemLabel="code2" itemValue="1" />
+					</b:selectOneMenu>
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="Problem Subcode" />
+					<b:selectOneMenu class="form-control" value="#{merchantBean.problemsubcode}">
+						<f:selectItem itemLabel="subcode1" itemValue="" />
+						<f:selectItem itemLabel="subcode" itemValue="1" />
+					</b:selectOneMenu>
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="Call Mode" />
+					<b:selectOneMenu class="form-control" value="#{merchantBean.callmode}">
+						<f:selectItem itemLabel="mode0" itemValue="" />
+						<f:selectItem itemLabel="mode1" itemValue="1" />
+						<f:selectItem itemLabel="mode2" itemValue="2" />
+						<f:selectItem itemLabel="mode3" itemValue="3" />
+					</b:selectOneMenu>
+				</b:column>
+				<b:column span="3">
+					<h:outputText value="Remarks" />
+					<b:inputText id="remarks" placeholder="Remarks" value="#{merchantBean.remarks}"/>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column span="3">
+					<b:commandButton look="primary" value="SUBMIT" process="@form" update="@form" action="#{merchantBean.breakfixsave}"  />
+				</b:column>
+			</b:row>
+			<b:growl id="growl" showDetail="true" showSummary="true"
+				globalOnly="true" life="3000"
+				animation-enter="animated bounceInDown"
+				animation-exit="animated flipOutX" escape="true" />
+		</b:form>
+	</b:container>
+	<style type="text/css">
+.sub-header {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+}
+
+.navbar-fixed-top {
+	border: 0 none;
+}
+
+.sidebar {
+	display: none;
+}
+
+@media ( min-width : 768px) {
+	.sidebar {
+		background-color: #f5f5f5;
+		border-right: 1px solid #eee;
+		bottom: 0;
+		display: block;
+		left: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: 20px;
+		position: fixed;
+		top: 51px;
+		z-index: 1000;
+	}
+}
+
+.nav-list {
+	margin-bottom: 20px;
+	margin-left: -20px;
+	margin-right: -21px;
+}
+
+.nav-list>li>a {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.nav-list>.active>a, .nav-sidebar>.active>a:hover, .nav-sidebar>.active>a:focus
+	{
+	background-color: #428bca;
+	color: #fff;
+}
+
+.main {
+	padding: 20px;
+}
+
+@media ( min-width : 768px) {
+	.main {
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+}
+
+.main .page-header {
+	margin-top: 0;
+}
+
+.placeholders {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.placeholders h4 {
+	margin-bottom: 0;
+}
+
+.placeholder {
+	margin-bottom: 20px;
+}
+
+.placeholder img {
+	border-radius: 50%;
+	display: inline-block;
+}
+</style>
+	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+</h:body>
+</html>

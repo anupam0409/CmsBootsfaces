@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Login</title>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.6/ladda-themeless.min.css" />
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.6/spin.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.6/ladda.min.js"></script>
+	<style type="text/css">
+.form-signin {
+	margin: 0 auto;
+	max-width: 330px;
+	padding: 15px;
+}
+</style>
+</h:head>
+<h:body style="padding-top: 60px; background-color: #808080;">
+	<b:container>
+		<h:form styleClass="form-signin" prependId="false" id="loginform">
+			<h2 class="form-signin-heading">Please Login</h2>
+			<b:inputText id="Username" placeholder="Enter Username"
+				required="true" value="#{loginBean.userName}">
+				<f:facet name="prepend">
+					<b:icon name="user" />
+				</f:facet>
+			</b:inputText>
+			<b:inputText id="Passcode" placeholder="Enter Passcode"
+				type="password" required="true" value="#{loginBean.userPass}">
+				<f:facet name="prepend">
+					<b:iconAwesome name="key" />
+				</f:facet>
+			</b:inputText>
+			<b:selectBooleanCheckbox value="true" caption="remember me" />
+			<b:commandButton look="primary btn-block" value="Sign In"
+				icon="log-in" size="lg" id="form-submit"
+				action="#{loginBean.validateUsernamePassword}" update="growl">
+			</b:commandButton>
+
+			<b:growl id="growl" showDetail="true" showSummary="true" life="3000"
+				animation-enter="animated bounceInDown"
+				animation-exit="animated flipOutX" />
+		</h:form>
+	</b:container>
+	<script>
+		$(function() {
+			$('#form-submit').click(function(e) {
+				e.preventDefault();
+				var l = Ladda.create(this);
+				l.start();
+				setTimeout(function() {
+					//e.func
+                l.stop();
+            	}, 2000);
+				return false;
+			});
+		});
+	</script>
+</h:body>
+</html>
